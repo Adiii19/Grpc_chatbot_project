@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  memory-service:
+    build: ./memory_service
+    container_name: memory_service
+    ports:
+      - "50052:50052"
+    depends_on:
+      - redis
+
+  llm-service:
+    build:
+      context: .
+      dockerfile: ./llm_service/Dockerfile
+    container_name: llm-service
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+    ports:
+      - "50053:50053"
+
+  chat-service:
+    build:
+      context: .
+      dockerfile: ./chat_service/Dockerfile
+    container_name: chat-service
+    ports:
+      - "50051:50051"
+    depends_on:
+      - memory-service
+      - llm-service
+
+

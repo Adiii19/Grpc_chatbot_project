@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./grpc-stream-chatbot/memory_service",
+        "./grpc-stream-chatbot/llm_service"
+    ]
+}

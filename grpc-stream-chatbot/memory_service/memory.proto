@@ -1,0 +1,52 @@
+syntax="proto3";
+
+package memory;
+
+service MemoryService{
+
+    rpc GetHistory(
+        HistoryRequest
+    ) returns(
+        HistoryResponse
+    );
+
+    rpc SaveMessage(
+        SaveRequest
+    ) returns(
+        SaveResponse
+    );
+
+    rpc DelHistory(HistoryRequest) returns(
+        SaveResponse
+    );
+
+}
+
+message HistoryRequest{
+    string session_id=1;
+}
+
+
+message ChatMessage {
+
+    string role = 1;
+    string content = 2;
+    string session_id=3;
+}
+
+message HistoryResponse{
+    repeated ChatMessage messages=1;
+}
+
+message SaveRequest{
+     string session_id=1;
+     string role=2;
+     string content=3;
+
+}
+
+
+
+message SaveResponse{
+    bool success=1;
+}

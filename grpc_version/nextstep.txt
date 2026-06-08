@@ -1,0 +1,40 @@
+Next-Level gRPC Features to Learn
+
+After this project, build these in sequence:
+
+1. Streaming Chatbot (Most Important)
+rpc ChatStream(stream ChatRequest)
+returns (stream ChatResponse);
+
+Learn:
+
+Bidirectional streaming
+Real-time chat
+Multiple messages over one connection
+2. AI Chatbot
+
+Replace rule-based logic with:
+
+Local LLM
+Ollama
+OpenAI API
+Gemini API
+3. Multi-user Chat Room
+
+Learn:
+
+Concurrent clients
+Server streaming
+Session management
+4. Distributed Microservices
+
+Create separate services:
+
+User Service
+Chat Service
+Memory Service
+LLM Service
+
+communicating via gRPC—this is how many production AI systems are structured.
+
+The best next step after completing this basic version is a bidirectional streaming chatbot, because streaming is one of gRPC's biggest advantages over traditional REST APIs.

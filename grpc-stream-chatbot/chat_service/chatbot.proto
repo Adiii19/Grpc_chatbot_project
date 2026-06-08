@@ -1,0 +1,23 @@
+syntax="proto3";
+
+package chatbot;
+
+service ChatBot{
+
+    rpc ChatStream(stream ChatRequest)
+       returns (stream ChatResponse);
+
+}
+
+message ChatRequest{
+
+    string message=1;
+    string session_id=2;
+
+}
+
+message ChatResponse{
+    string token=1;
+    bool completed=2;
+}
+

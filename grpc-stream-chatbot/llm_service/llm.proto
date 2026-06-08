@@ -1,0 +1,31 @@
+syntax="proto3";
+
+package llm;
+
+service LLMService{
+
+  rpc Generate(
+    GenerateRequest
+  ) returns (
+    stream TokenResponse
+  );
+
+
+}
+
+message LLMMessage{
+
+  string role=1;
+  string content=2;
+
+}
+
+message GenerateRequest{
+
+  repeated LLMMessage history=1;
+}
+
+message TokenResponse{
+    string token=1;
+    bool completed=2;
+}
